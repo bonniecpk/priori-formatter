@@ -23,7 +23,7 @@ module Priori
     end
 
     def dob=(date)
-      @dob = Date.parse(date) rescue Date.strptime(date, "%m/%d/%Y")
+      @dob = Date.strptime(date, "%m-%d-%Y") rescue Date.strptime(date, "%m/%d/%Y")
     end
   end
 end

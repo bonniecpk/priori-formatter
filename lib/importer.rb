@@ -9,7 +9,7 @@ module Priori
     def import
       persons = []
       CSV.foreach(@input, col_sep: @delimiter) do |row|
-        persons << Person.new(Hash[@formats.each_with_index.map { |attr,index| [attr, row[index]] }])
+        persons << Person.new(Hash[@formats.each_with_index.map { |attr,index| [attr, row[index].strip] }])
       end
       persons
     end

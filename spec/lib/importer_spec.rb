@@ -19,7 +19,7 @@ module Priori
         expect(persons[0].first_name).to     eq("Anna")
         expect(persons[0].middle_initial).to eq("F")
         expect(persons[0].gender).to         eq("Female")
-        expect(persons[0].dob).to            eq(Date.parse("6-3-1975"))
+        expect(persons[0].dob).to            eq(Date.parse("3-6-1975"))
         expect(persons[0].favorite_color).to eq("Red")
       end
     end
@@ -40,7 +40,7 @@ module Priori
         expect(persons[0].last_name).to      eq("Abercrombie")
         expect(persons[0].first_name).to     eq("Neil")
         expect(persons[0].gender).to         eq("Male")
-        expect(persons[0].dob).to            eq(Date.parse("2-13-1943"))
+        expect(persons[0].dob).to            eq(Date.parse("13-2-1943"))
         expect(persons[0].favorite_color).to eq("Tan")
       end
     end
