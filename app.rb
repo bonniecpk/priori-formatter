@@ -38,7 +38,10 @@ unless $options.output
   fail("Require an output file option: -o")
 end
 
-Priori::Formatter.new(
-  inputs: $options.inputs,
-  output: $options.output
-).format
+inputs.each do |input|
+  persons = Priori::FormatterFactory.get_formatter(
+    $options.inputs[:delimiter],
+    input:  $options.input[:file],
+    output: $options.output
+  ).format
+end

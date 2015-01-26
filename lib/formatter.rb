@@ -1,7 +1,7 @@
 module Priori
   class Formatter
-    def initialize(opts)
-      @inputs = opts[:inputs]
+    def initialize(opts = {})
+      @input = opts[:input]
 
       if opts[:output]
         @output = opts[:output]
@@ -11,9 +11,30 @@ module Priori
     end
 
     def format
-      @inputs.each do |input|
-        input[:file]
-        input[:delimiter]
+      raise NotImplementedError
+    end
+  end
+
+  class SpaceFormatter < Formatter
+    def format
+      CSV.foreach(input[:file], col_sep: ' ' ) do |row|
+        puts row
+      end
+    end
+  end
+
+  class CommaFormatter < Formatter
+    def format
+      CSV.foreach(input[:file], col_sep: ',') do |row|
+        puts row
+      end
+    end
+  end
+
+  class PipeFormatter < Formatter
+    def format
+      CSV.foreach(input[:file], col_sep: '|') do |row|
+        puts row
       end
     end
   end
