@@ -3,14 +3,22 @@ require_relative '../spec_helper'
 module Priori
   DATA_DIR = "#{File.dirname(__FILE__)}/../data"
 
-  describe SpaceImporter do
+  describe Importer do
     context "#import" do
       it "no data" do
-        persons = SpaceImporter.new(input: "#{DATA_DIR}/no_data.txt").import
+        persons = Importer.new(
+          input:     "#{DATA_DIR}/no_data.txt",
+          delimiter: 'd',
+          formats:   [:a, :b]
+        ).import
 
         expect(persons.size).to              eq(0)
       end
+    end
+  end
 
+  describe SpaceImporter do
+    context "#import" do
       it "valid data" do
         persons = SpaceImporter.new(input: "#{DATA_DIR}/space_delimited.txt").import
 
@@ -27,12 +35,6 @@ module Priori
 
   describe CommaImporter do
     context "#import" do
-      it "no data" do
-        persons = CommaImporter.new(input: "#{DATA_DIR}/no_data.txt").import
-
-        expect(persons.size).to              eq(0)
-      end
-
       it "valid data" do
         persons = CommaImporter.new(input: "#{DATA_DIR}/comma_delimited.txt").import
 
@@ -42,6 +44,23 @@ module Priori
         expect(persons[0].gender).to         eq("Male")
         expect(persons[0].dob).to            eq(Date.parse("13-2-1943"))
         expect(persons[0].favorite_color).to eq("Tan")
+      end
+    end
+  end
+
+
+  describe PipeImporter do
+    context "#import" do
+      it "valid data" do
+        persons = PipeImporter.new(input: "#{DATA_DIR}/pipe_delimited.txt").import
+
+        expect(persons.size).to              eq(3)
+        expect(persons[0].last_name).to      eq("Smith")
+        expect(persons[0].first_name).to     eq("Steve")
+        expect(persons[0].middle_initial).to eq("D")
+        expect(persons[0].gender).to         eq("Male")
+        expect(persons[0].dob).to            eq(Date.parse("3-3-1985"))
+        expect(persons[0].favorite_color).to eq("Red")
       end
     end
   end
