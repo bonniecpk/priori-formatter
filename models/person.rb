@@ -1,7 +1,5 @@
 module Priori
   class Person
-    include Comparable
-
     attr_accessor :first_name,
                   :last_name,
                   :middle_initial,
@@ -29,7 +27,11 @@ module Priori
     end
 
     def dob_display
-      @dob.strftime("%-m/%d/%Y")
+      @dob.strftime("%-m/%-d/%Y")
+    end
+
+    def to_s
+      [first_name, last_name, gender, dob_display, favorite_color].join(" ")
     end
   end
 end
