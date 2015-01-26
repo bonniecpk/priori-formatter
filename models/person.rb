@@ -1,5 +1,7 @@
 module Priori
   class Person
+    include Comparable
+
     attr_accessor :first_name,
                   :last_name,
                   :middle_initial,
@@ -24,6 +26,10 @@ module Priori
 
     def dob=(date)
       @dob = Date.strptime(date, "%m-%d-%Y") rescue Date.strptime(date, "%m/%d/%Y")
+    end
+
+    def dob_display
+      @dob.strftime("%-m/%d/%Y")
     end
   end
 end
