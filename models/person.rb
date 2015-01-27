@@ -31,7 +31,7 @@ module Priori
     end
 
     def to_s
-      [first_name, last_name, gender, dob_display, favorite_color].join(" ")
+      [last_name, first_name, gender, dob_display, favorite_color].join(" ")
     end
   end
 end

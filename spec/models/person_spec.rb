@@ -54,7 +54,7 @@ module Priori
         favorite_color:  'yellow')
       }
 
-      it { expect(person.to_s).to eq("Poki Chui Female 10/2/1980 yellow") }
+      it { expect(person.to_s).to eq("Chui Poki Female 10/2/1980 yellow") }
     end
   end
 end

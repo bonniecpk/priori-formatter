@@ -38,7 +38,9 @@ unless $options.output
   fail("Require an output file option: -o")
 end
 
-Priori::Formatter.format(
+formatter = Priori::Formatter.new(
   inputs: $options.inputs,
   output: $options.output
-).format
+)
+formatter.format
+formatter.print
