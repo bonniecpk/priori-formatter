@@ -1,6 +1,7 @@
 ###Dependencies
 - Use Ruby 2.1.3
 - Install bundler
+    
     [host]$ gem install bundler
 
 ###Setup
